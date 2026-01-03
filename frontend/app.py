@@ -1,5 +1,12 @@
 import streamlit as st
-import requests
+import sys
+import os
+
+sys.path.append(os.path.abspath("backend/app"))
+
+from retriever import retrieve_similar_incidents
+from generator import generate_incident_analysis
+
 from datetime import datetime
 
 # ---------------- PAGE CONFIG ----------------
@@ -111,20 +118,13 @@ if analyze_clicked:
         st.warning("Please enter a valid incident description.")
     else:
         with st.spinner("Analyzing incident using historical intelligence..."):
-            response = requests.post(
-                "http://127.0.0.1:8000/analyze-incident",
-                json={"description": incident_text}
-            )
+            docs = retrieve_similar_incidents(incident_text)
+            report = generate_incident_analysis(incident_text, docs)
 
-        if response.status_code == 200:
-            report = response.json()["analysis"]
-
-            st.markdown('<div class="main-card">', unsafe_allow_html=True)
-            st.markdown("### Incident Analysis Report")
-            st.markdown(
-                f'<div class="report-card">{report}</div>',
-                unsafe_allow_html=True
-            )
-            st.markdown('</div>', unsafe_allow_html=True)
-        else:
-            st.error("Backend service not reachable. Ensure FastAPI is running.")
+        st.markdown('<div class="main-card">', unsafe_allow_html=True)
+        st.markdown("### 🧠 Incident Analysis Report")
+        st.markdown(
+            f'<div class="report-card">{report}</div>',
+            unsafe_allow_html=True
+        )
+        st.markdown('</div>', unsafe_allow_html=True)
