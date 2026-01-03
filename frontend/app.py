@@ -2,21 +2,22 @@ import streamlit as st
 import sys
 import os
 
-sys.path.append(os.path.abspath("backend/app"))
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BACKEND_PATH = os.path.join(BASE_DIR, "..", "backend", "app")
+sys.path.append(os.path.abspath(BACKEND_PATH))
 
 from retriever import retrieve_similar_incidents
 from generator import generate_incident_analysis
 
-from datetime import datetime
 
-# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="Enterprise Incident Intelligence System",
-    page_icon="",
+    page_icon="🚨",
     layout="centered"
 )
 
-# ---------------- CUSTOM CSS ----------------
+
 st.markdown("""
 <style>
 body {
@@ -55,17 +56,7 @@ body {
     margin-bottom: 32px;
 }
 
-label {
-    font-weight: 600;
-    color: #e5e7eb;
-}
-
-textarea {
-    background-color: #020617 !important;
-    color: #e5e7eb !important;
-}
-
-.stButton>button {
+.stButton > button {
     width: 100%;
     padding: 14px;
     font-size: 16px;
@@ -76,25 +67,24 @@ textarea {
     border: none;
 }
 
-.stButton>button:hover {
+.stButton > button:hover {
     background: linear-gradient(135deg, #2563eb, #1d4ed8);
 }
-
-
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HEADER ----------------
+
 st.markdown('<div class="title">Enterprise Incident Intelligence System</div>', unsafe_allow_html=True)
 st.markdown(
     '<div class="subtitle">AI-powered decision support for faster incident resolution</div>',
     unsafe_allow_html=True
 )
 
-# ---------------- INCIDENT INPUT ----------------
+
+
 st.markdown('<div class="main-card">', unsafe_allow_html=True)
 
-st.markdown("### Incident Description")
+st.markdown("### 📝 Incident Description")
 
 incident_text = st.text_area(
     "Describe the current production issue",
@@ -103,16 +93,14 @@ incident_text = st.text_area(
     label_visibility="collapsed"
 )
 
-st.markdown(
-    f'<div class="footer-text">{len(incident_text)} characters</div>',
-    unsafe_allow_html=True
-)
+st.markdown(f"<div style='text-align:right;color:#94a3b8;font-size:12px'>{len(incident_text)} characters</div>",
+            unsafe_allow_html=True)
 
 analyze_clicked = st.button("Analyze Incident")
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------------- ANALYSIS RESULT ----------------
+
 if analyze_clicked:
     if not incident_text.strip():
         st.warning("Please enter a valid incident description.")
