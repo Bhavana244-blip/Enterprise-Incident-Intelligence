@@ -5,3 +5,11 @@ langchain
 faiss-cpu
 python-dotenv
 pydantic
+streamlit
+langchain-community
+langchain-huggingface
+sentence-transformers
+faiss-cpu
+torch
+numpy
+
