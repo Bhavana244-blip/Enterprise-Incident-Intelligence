@@ -95,17 +95,18 @@ The deployed application allows users to:
 
 🔗 **Demo URL:** https://enterprise-incident-intelligence.streamlit.app/
 
----
+
 
 ## Running Locally
 
 ### 1. Start the Backend
 ```bash
 uvicorn backend.app.main:app --reload
-
-### 1. Start the Backend
-```bash
+```
+### 2. Start the Frontend
+```
 streamlit run frontend/app.py
+```
 
 ### Design Decisions
 
@@ -136,3 +137,4 @@ This project was built as a focused enterprise-style MVP to demonstrate applied 
 ### Disclaimer
 
 This is a demonstration system using sample incident data. It is not connected to real production environments.
+
