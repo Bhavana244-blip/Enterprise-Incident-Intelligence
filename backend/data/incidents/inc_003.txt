@@ -1,0 +1,15 @@
+Incident ID: INC-003
+Service: Order Processing Service
+Severity: High
+
+Issue:
+Order creation requests were timing out during promotional campaigns.
+
+Root Cause:
+Message queue backlog caused by insufficient consumer throughput.
+
+Resolution:
+Increased consumer instances and optimized queue processing logic.
+
+Preventive Actions:
+Introduced queue depth monitoring and load testing before campaigns.

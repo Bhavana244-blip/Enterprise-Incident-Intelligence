@@ -1,0 +1,15 @@
+Incident ID: INC-002
+Service: Authentication Service
+Severity: Medium
+
+Issue:
+Users experienced intermittent login failures.
+
+Root Cause:
+Load balancer health check misconfiguration caused frequent instance restarts.
+
+Resolution:
+Corrected health check configuration and stabilized load balancer rules.
+
+Preventive Actions:
+Added deployment validation checks for load balancer settings.

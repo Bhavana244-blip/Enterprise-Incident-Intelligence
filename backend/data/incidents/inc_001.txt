@@ -1,0 +1,15 @@
+Incident ID: INC-001
+Service: Payments API
+Severity: High
+
+Issue:
+Transactions were failing and latency exceeded 5 seconds during peak traffic hours.
+
+Root Cause:
+Database connection pool exhaustion caused by a sudden increase in concurrent requests.
+
+Resolution:
+Increased database connection pool size, enabled query caching, and scaled read replicas.
+
+Preventive Actions:
+Improved traffic spike alerts and implemented auto-scaling thresholds.
