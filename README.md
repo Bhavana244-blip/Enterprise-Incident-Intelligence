@@ -109,7 +109,7 @@ streamlit run frontend/app.py
 ```
 
 ### Design Decisions
-
+---
 Semantic retrieval over keyword search to capture intent, not just text matches
 
 Local embeddings to reduce cost and avoid vendor lock-in
@@ -119,6 +119,7 @@ Pluggable reasoning layer to support future integration with enterprise LLMs
 Simple, functional UI aligned with internal enterprise tools rather than consumer apps
 
 ### Future Enhancements
+---
 
 Integration with ServiceNow / Jira incident data
 
@@ -131,10 +132,11 @@ Incident confidence scoring and re-ranking
 Post-incident learning and automated knowledge updates
 
 ### Author Notes
-
+---
 This project was built as a focused enterprise-style MVP to demonstrate applied AI system design, semantic retrieval, and operational intelligence workflows. The emphasis is on architectural clarity, real-world relevance, and explainability rather than feature bloat.
 
 ### Disclaimer
 
 This is a demonstration system using sample incident data. It is not connected to real production environments.
+
 
